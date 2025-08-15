@@ -56,7 +56,7 @@ const Hero: React.FC = () => {
             <div className="flex justify-center items-center">
               <div className="relative w-full max-w-lg">
                 <img
-                  src="../public/images/GroupLogo.jpg"
+                  src="../public/images/logo1.jpg"
                   alt="Microsoft Planner Logo"
                   className="w-full h-auto drop-shadow-2xl animate-float"
                 />
