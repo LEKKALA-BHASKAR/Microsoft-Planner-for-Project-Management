@@ -12,7 +12,8 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onSectionChange 
   const navItems = [
     { id: 'home', label: 'Home' },
     { id: 'about', label: 'About Authors' },
-    { id: 'contact', label: 'Contact Us' }
+    { id: 'contact', label: 'Contact Us' },
+    {id: 'admin', label: 'admin'}
   ];
 
   const handleNavClick = (sectionId: string) => {
@@ -24,10 +25,15 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onSectionChange 
     <nav className="fixed top-0 left-0 right-0 bg-white shadow-md z-50 border-b border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          {/* Logo/Brand */}
+          {/* Logo/Brand with Image */}
           <div className="flex items-center">
-            <div className="flex-shrink-0">
-              <h1 className="text-xl font-bold text-[#0078D4]">Microsoft Planner Series</h1>
+            <div className="flex-shrink-100 flex items-center">
+              <img
+                className="h-10 w-auto mr-5" // Adjust size as needed
+                src="../public/images/GroupLogo.jpg" // Update with your logo path
+                alt="Microsoft Planner Series Logo"
+              />
+              <h1 className="text-xl font-bold text-[#0078D4] hidden sm:block">Microsoft Planner Series</h1>
             </div>
           </div>
 

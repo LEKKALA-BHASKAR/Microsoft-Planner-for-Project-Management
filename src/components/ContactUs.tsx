@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send, CheckCircle } from 'lucide-react';
-
+import { Mail, Phone, MapPin, Send, CheckCircle, AlertCircle } from 'lucide-react';
+import axios from 'axios';
+import AdminContacts from './admin';
 const ContactUs: React.FC = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -8,6 +9,8 @@ const ContactUs: React.FC = () => {
     message: ''
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -16,14 +19,25 @@ const ContactUs: React.FC = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate form submission
-    setIsSubmitted(true);
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({ name: '', email: '', message: '' });
-    }, 3000);
+    setIsLoading(true);
+    setError('');
+
+    try {
+      const response = await axios.post('http://localhost:5000/api/contact', formData);
+      
+      if (response.status === 200) {
+        setIsSubmitted(true);
+        setFormData({ name: '', email: '', message: '' });
+        setTimeout(() => setIsSubmitted(false), 3000);
+      }
+    } catch (err) {
+      setError('Failed to send message. Please try again later.');
+      console.error('Error submitting form:', err);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -45,6 +59,15 @@ const ContactUs: React.FC = () => {
             
             {!isSubmitted ? (
               <form onSubmit={handleSubmit} className="space-y-6">
+                {error && (
+                  <div className="bg-red-50 border-l-4 border-red-500 p-4 mb-4">
+                    <div className="flex items-center">
+                      <AlertCircle className="h-5 w-5 text-red-500 mr-3" />
+                      <p className="text-red-700">{error}</p>
+                    </div>
+                  </div>
+                )}
+                
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
                     Name
@@ -95,10 +118,23 @@ const ContactUs: React.FC = () => {
                 
                 <button
                   type="submit"
-                  className="w-full bg-[#0078D4] text-white py-3 px-6 rounded-lg font-medium hover:bg-[#005a9d] transition-colors duration-200 flex items-center justify-center space-x-2 transform hover:scale-[1.02] active:scale-[0.98]"
+                  disabled={isLoading}
+                  className={`w-full ${isLoading ? 'bg-[#005a9d]' : 'bg-[#0078D4]'} text-white py-3 px-6 rounded-lg font-medium hover:bg-[#005a9d] transition-colors duration-200 flex items-center justify-center space-x-2`}
                 >
-                  <Send size={20} />
-                  <span>Send Message</span>
+                  {isLoading ? (
+                    <>
+                      <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                      <span>Sending...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Send size={20} />
+                      <span>Send Message</span>
+                    </>
+                  )}
                 </button>
               </form>
             ) : (
@@ -128,7 +164,7 @@ const ContactUs: React.FC = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900 mb-1">Email</h3>
-                    <p className="text-gray-600">contact@plannerbook.series</p>
+                    <p className="text-gray-600">bassnaidu1242@gmail.com</p>
                     <p className="text-sm text-gray-500 mt-1">We typically respond within 24 hours</p>
                   </div>
                 </div>
@@ -180,6 +216,7 @@ const ContactUs: React.FC = () => {
                 <li className="flex items-center">
                   <CheckCircle size={16} className="mr-3 flex-shrink-0" />
                   Schedule Audits & Reviews
+
                 </li>
               </ul>
             </div>

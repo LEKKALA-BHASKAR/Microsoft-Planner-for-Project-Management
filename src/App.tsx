@@ -3,6 +3,8 @@ import Navigation from './components/Navigation';
 import Home from './components/Home';
 import AboutAuthors from './components/AboutAuthors';
 import ContactUs from './components/ContactUs';
+import AdminContacts from './components/admin'
+
 
 function App() {
   const [activeSection, setActiveSection] = useState('home');
@@ -15,6 +17,8 @@ function App() {
         return <AboutAuthors />;
       case 'contact':
         return <ContactUs />;
+      case 'admin':
+        return <AdminContacts/>;
       default:
         return <Home />;
     }
@@ -22,6 +26,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+
       <Navigation 
         activeSection={activeSection} 
         onSectionChange={setActiveSection} 
