@@ -25,7 +25,7 @@ const ContactUs: React.FC = () => {
     setError('');
 
     try {
-      const response = await axios.post('http://localhost:5000/api/contact', formData);
+      const response = await axios.post('https://microsoft-planner-for-project-manag-three.vercel.app/api/contact', formData);
       
       if (response.status === 200) {
         setIsSubmitted(true);
