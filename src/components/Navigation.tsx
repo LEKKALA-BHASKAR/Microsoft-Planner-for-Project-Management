@@ -33,7 +33,7 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onSectionChange 
                 src="../images/logo1.jpg" // Update with your logo path
                 alt="Microsoft Planner Series Logo"
               />
-              <h1 className="text-xl font-bold text-[#0078D4] hidden sm:block">Microsoft Planner Series</h1>
+              <h1 className="text-xl font-bold text-[#0078D4] hidden sm:block">Planner For Project Management</h1>
             </div>
           </div>
 
