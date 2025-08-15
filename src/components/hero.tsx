@@ -49,20 +49,7 @@ const Hero: React.FC = () => {
                 </p>
               </div>
 
-              <div className="flex flex-wrap gap-4 pt-4">
-                <button className="px-8 py-4 bg-yellow-400 hover:bg-yellow-300 text-blue-900 font-bold rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center">
-                  <span>Explore the Series</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                  </svg>
-                </button>
-                <button className="px-8 py-4 bg-transparent hover:bg-blue-800/50 border-2 border-white text-white font-bold rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center">
-                  <span>View Sample Chapters</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
-                    <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z" />
-                  </svg>
-                </button>
-              </div>
+             
             </div>
 
             {/* Right Image */}

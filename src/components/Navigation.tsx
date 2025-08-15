@@ -13,7 +13,7 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onSectionChange 
     { id: 'home', label: 'Home' },
     { id: 'about', label: 'About Authors' },
     { id: 'contact', label: 'Contact Us' },
-    {id: 'admin', label: 'admin'}
+    {id: 'admin', label: 'Admin'}
   ];
 
   const handleNavClick = (sectionId: string) => {
