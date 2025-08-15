@@ -23,7 +23,7 @@ const AdminContacts: React.FC = () => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      fetch('https://microsoft-planner-for-project-manag-three.vercel.app/api/contact')
+      fetch('https://microsoft-planner-for-project-management.onrender.com/api/contact')
         .then((res) => res.json())
         .then((data) => setContacts(data))
         .catch((err) => console.error('Error fetching contacts:', err));
