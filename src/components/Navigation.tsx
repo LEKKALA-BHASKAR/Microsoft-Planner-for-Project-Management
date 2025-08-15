@@ -30,7 +30,7 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onSectionChange 
             <div className="flex-shrink-100 flex items-center">
               <img
                 className="h-10 w-auto mr-5" // Adjust size as needed
-                src="../public/images/logo1.jpg" // Update with your logo path
+                src="../images/logo1.jpg" // Update with your logo path
                 alt="Microsoft Planner Series Logo"
               />
               <h1 className="text-xl font-bold text-[#0078D4] hidden sm:block">Microsoft Planner Series</h1>
